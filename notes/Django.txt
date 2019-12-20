@@ -1,0 +1,50 @@
+Django
+    - a Web framework written in Python
+
+    Web framework
+        - software that supports the development of dynamic Web sites, applications, and services.
+        - provides a set of tools and functionalities that solves many common problems associated with Web development, such as security features, database access, sessions, template processing, URL routing, internationalization, localization, and much more.
+
+
+    ----------------------------
+
+    Models
+        - single, definitive source of information about your data. It contains the essential fields and behaviors of the data you’re storing. Generally, each model maps to a single database table.
+
+
+
+
+    
+
+
+    -----------------------------
+    Model Meta options
+        - all the possible metadata options that you can give your model in its internal class Meta.
+
+        
+    app_label
+
+        Options.app_label
+            - If a model is defined outside of an application in INSTALLED_APPS, it must declare which app it belongs to:
+                
+                app_label = 'myapp'
+
+            - If you want to represent a model with the format app_label.object_name or app_label.model_name you can use model._meta.label or model._meta.label_lower respectively.
+
+    db_table
+
+        Options.db_table
+            - The name of the database table to use for the model:
+                
+                db_table = 'music_album'
+
+    get_latest_by
+
+        Options.get_latest_by
+            - The name of a field or a list of field names in the model, typically DateField, DateTimeField, or IntegerField. This specifies the default field(s) to use in your model Manager’s latest() and earliest() methods.
+
+                # Latest by ascending order_date.
+                get_latest_by = "order_date"
+
+                # Latest by priority descending, order_date ascending.
+                get_latest_by = ['-priority', 'order_date']
