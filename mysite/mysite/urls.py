@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path("polls/", include("polls.urls")),  # ex:  http://127.0.0.1:8080/polls/
     path("admin/", admin.site.urls),
+    path("polls/", include("polls.urls")),  # ex:  http://127.0.0.1:8080/polls/
 ]
