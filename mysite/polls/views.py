@@ -33,6 +33,7 @@ class DetailView(generic.DetailView):
     def get_queryset(self):
         """
         Excludes any questions that aren't published yet.
+        (prevent users from viewing future questions through URL)
         """
         return Question.objects.filter(pub_date__lte=timezone.now())
 
