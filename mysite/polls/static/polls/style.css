@@ -1,0 +1,24 @@
+h1 {
+  color: whitesmoke;
+  margin: 1.5em 0 10px 0;
+}
+
+/* ul.q {
+  list-style-type: square;
+} */
+
+li {
+  color: whitesmoke;
+  margin-bottom: 3px;
+  font-size: 1.25em;
+}
+
+li a {
+  color: whitesmoke;
+}
+
+body {
+  /* background: white url("images/background.gif") no-repeat; */
+  background: white url("images/backg2.gif") center center no-repeat;
+  background-size: cover;
+}
