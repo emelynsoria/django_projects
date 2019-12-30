@@ -3,9 +3,9 @@ h1 {
   margin: 1.5em 0 10px 0;
 }
 
-/* ul.q {
+ul.q {
   list-style-type: square;
-} */
+}
 
 li {
   color: whitesmoke;
@@ -17,8 +17,46 @@ li a {
   color: whitesmoke;
 }
 
+#icon {
+  position: absolute;
+  left: 12em;
+}
+
+#voteNum {
+  position: absolute;
+  left: 15em;
+}
+
 body {
   /* background: white url("images/background.gif") no-repeat; */
   background: white url("images/backg2.gif") center center no-repeat;
   background-size: cover;
+}
+
+#btn {
+  color: #9e4be2;
+  background-color: whitesmoke;
+  border: 2px solid #9e4be2;
+  width: 7em;
+  height: 2em;
+  margin: 10px 0px 0 3em;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+#homeBtn {
+  color: #9e4be2;
+  background-color: whitesmoke;
+  border: 2px solid #9e4be2;
+  /* width: 10em; */
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.choices {
+  margin-left: 2.5em;
+}
+
+#label {
+  color: whitesmoke;
 }
