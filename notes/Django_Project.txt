@@ -1,0 +1,306 @@
+INSTALLATION:
+        
+    1. pip install Django==2.2.6
+        or
+        pip3 install Django
+    2. django-admin --version
+    3. django-admin startproject <sample_folder_name>
+    4. cd <sample_folder_name>
+    5. python manage.py runserver
+    Then, open the link for development server
+    6. python manage.py migrate
+    7. python manage.py createsuperuser
+    8. python manage.py runserver
+    9. go to http://127.0.0.1:8000/admin #http://127.0.0.1:8000/admin/login/?next=/admin/
+
+
+Django
+    - comes with a utility that automatically generates the basic directory structure of an app, so you can focus on writing code rather than creating directories.
+
+POLL APPLICATION
+    2 PARTS:
+        A public site that lets people view polls and vote in them.
+        An admin site that lets you add, change, and delete polls.
+
+🔵 Writing your first Django app, part 1
+
+    🔸Check Django Version:
+        🔶 python -m django --version
+        🔶 django-admin     # check django-admin subcommands
+
+    🔸Creating a project
+
+        Django project
+            - a collection of settings for an instance of Django, including database configuration, Django-specific options and application-specific settings.
+
+        🔶 cd <sampleDirectoryName>
+        🔶 django-admin startproject mysite
+
+
+            mysite/
+                manage.py
+                mysite/
+                    __init__.py
+                    settings.py
+                    urls.py
+                    asgi.py
+                    wsgi.py 
+
+            These files are:
+                The outer mysite/ root directory is a container for your project. Its name doesn’t matter to Django; you can rename it to anything you like.
+                
+                manage.py:
+                    - A command-line utility that lets you interact with this Django project in various ways. You can read all the details about manage.py in django-admin and manage.py.
+                The inner mysite/ directory is the actual Python package for your project. Its name is the Python package name you’ll need to use to import anything inside it (e.g. mysite.urls).
+                
+                mysite/__init__.py:
+                    - An empty file that tells Python that this directory should be considered a Python package. If you’re a Python beginner, read more about packages in the official Python docs.
+                mysite/settings.py:
+                    - Settings/configuration for this Django project. Django settings will tell you all about how settings work.
+                mysite/urls.py:
+                    - The URL declarations for this Django project; a “table of contents” of your Django-powered site. You can read more about URLs in URL dispatcher.
+                mysite/asgi.py:
+                    - An entry-point for ASGI-compatible web servers to serve your project. See How to deploy with ASGI for more details.
+                mysite/wsgi.py:
+                    - An entry-point for WSGI-compatible web servers to serve your project. See How to deploy with WSGI for more details.
+                    - Used to deploy files
+
+    🔸The development server
+        - a lightweight Web server written purely in Python
+
+        🔶 python manage.py runserver
+
+            terminal output should be:
+                Watching for file changes with StatReloader
+                Performing system checks...
+
+                System check identified no issues (0 silenced).
+
+                You have 17 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+                Run 'python manage.py migrate' to apply them.
+
+                December 20, 2019 - 06:37:48
+                Django version 3.0.1, using settings 'mysite.settings'
+                Starting development server at http://127.0.0.1:8080/
+                Quit the server with CONTROL-C.
+                [20/Dec/2019 06:37:51] "GET / HTTP/1.1" 200 16351
+                [20/Dec/2019 06:37:51] "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+                [20/Dec/2019 06:37:51] "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 85876
+                ...
+                ...
+
+
+            Changing the port
+
+                - By default, the runserver command starts the development server on the internal IP at port 8000.
+                If you want to change the server’s port, pass it as a command-line argument. For instance, this command starts the server on port 8080:
+
+                    🔸 python manage.py runserver 8080
+                
+                - If you want to change the server’s IP, pass it along with the port. For example, to listen on all available public IPs (which is useful if you are running Vagrant or want to show off your work on other computers on the network), use:
+                
+                    🔸python manage.py runserver 0:8000
+                    
+                - 0 is a shortcut for 0.0.0.0. Full docs for the development server can be found in the runserver reference.
+
+
+        - DON'T use this server in anything resembling a production environment. It’s intended only for use while developing. (We’re in the business of making Web frameworks, not Web servers.)
+            
+            Automatic reloading of runserver
+
+                - The development server automatically reloads Python code for each request as needed. You don’t need to restart the server for code changes to take effect. However, some actions like adding files don’t trigger a restart, so you’ll have to restart the server in these cases.
+
+
+    🔸Creating the Polls app
+            
+        Projects vs. apps
+            app
+                - a Web application that does something – e.g., a Weblog system, a database of public records or a small poll app.
+                - can be in multiple projects.
+            project
+                - a collection of configuration and apps for a particular website.
+                - can contain multiple apps.
+
+        we’ll create our poll app right next to your manage.py file so that it can be imported as its own top-level module, rather than a submodule of mysite.
+        To create your app, make sure you’re in the same directory as manage.py and type this command:
+
+            🔶 python manage.py startapp polls
+
+                That will create a directory 'polls':
+                    
+                    polls/
+                        __init__.py
+                        admin.py
+                        apps.py
+                        migrations/
+                            __init__.py
+                        models.py
+                        tests.py
+                        views.py
+        
+
+    🔸Write your first view
+        
+        1. Let’s write the first view.Let’s write the first view. Open the file polls/views.py and put the following Python code in it:
+            
+            🔶 polls/views.py
+                from django.http import HttpResponse
+
+                def index(request):
+                    return HttpResponse("Hello, world. You're at the polls index.")
+
+        
+        2. To create a URLconf in the polls directory, create a file called urls.py. Your app directory should now look like:
+            
+            polls/
+                __init__.py
+                admin.py
+                apps.py
+                migrations/
+                    __init__.py
+                models.py
+                tests.py
+                urls.py
+                views.py
+
+
+            🔶 polls/urls.py
+                from django.urls import path
+
+                from . import views
+
+                urlpatterns = [path("", views.index, name="index")]
+
+        3. The next step is to point the root URLconf at the polls.urls module. In mysite/urls.py, add an import for django.urls.include and insert an include() in the urlpatterns list, so you have:
+
+            🔶 mysite/urls.py
+                from django.contrib import admin
+                from django.urls import include, path
+
+                urlpatterns = [
+                    path('polls/', include('polls.urls')),
+                    path('admin/', admin.site.urls),
+                ]
+
+
+        The include() function allows referencing other URLconfs. Whenever Django encounters include(), it chops off whatever part of the URL matched up to that point and sends the remaining string to the included URLconf for further processing.
+
+        The idea behind include() is to make it easy to plug-and-play URLs. Since polls are in their own URLconf (polls/urls.py), they can be placed under “/polls/”, or under “/fun_polls/”, or under “/content/polls/”, or any other path root, and the app will still work.
+
+            When to use include()
+
+                - should always use include() when you include other URL patterns. 
+                - 'admin.site.urls' is the only exception to this.
+
+
+        4. You have now wired an index view into the URLconf. Verify it’s working with the following command:
+            
+            To save changes to db:
+                🔶 python manage.py makemigrations
+                🔶 python manage.py migrate
+
+            🔶 python manage.py runserver
+
+        5. Go to http://localhost:8000/polls/ in your browser, and you should see the text “Hello, world. You’re at the polls index.”, which you defined in the index view.
+
+
+        The path() function is passed four arguments, two required: route and view, and two optional: kwargs, and name. At this point, it’s worth reviewing what these arguments are for.
+            
+            path() argument: route
+                route is a string that contains a URL pattern. When processing a request, Django starts at the first pattern in urlpatterns and makes its way down the list, comparing the requested URL against each pattern until it finds one that matches.
+
+                Patterns don’t search GET and POST parameters, or the domain name. For example, in a request to https://www.example.com/myapp/, the URLconf will look for myapp/. In a request to https://www.example.com/myapp/?page=3, the URLconf will also look for myapp/.
+
+            path() argument: view
+                When Django finds a matching pattern, it calls the specified view function with an HttpRequest object as the first argument and any “captured” values from the route as keyword arguments. We’ll give an example of this in a bit.
+
+            path() argument: kwargs
+                Arbitrary keyword arguments can be passed in a dictionary to the target view. We aren’t going to use this feature of Django in the tutorial.
+
+            path() argument: name
+                Naming your URL lets you refer to it unambiguously from elsewhere in Django, especially from within templates. This powerful feature allows you to make global changes to the URL patterns of your project while only touching a single file.
+
+                When you’re comfortable with the basic request and response flow, read part 2 of this tutorial to start working with the database.
+
+🔵 Writing your first Django app, part 2
+
+    Database setup
+
+        1. Open up mysite/settings.py. It’s a normal Python module with module-level variables representing Django settings.
+            DEFAULT (configuration uses SQLite)
+
+            If you wish to use another database, install the appropriate database bindings and change the following keys in the DATABASES 'default' item to match your database connection settings:
+
+            ENGINE – Either 'django.db.backends.sqlite3', 'django.db.backends.postgresql', 'django.db.backends.mysql', or 'django.db.backends.oracle'. Other backends are also available.
+            NAME – The name of your database. If you’re using SQLite, the database will be a file on your computer; in that case, NAME should be the full absolute path, including filename, of that file. The default value, os.path.join(BASE_DIR, 'db.sqlite3'), will store the file in your project directory.
+
+            For databases other than SQLite
+                If you’re using a database besides SQLite, make sure you’ve created a database by this point. Do that with “CREATE DATABASE database_name;” within your database’s interactive prompt.
+
+                Also make sure that the database user provided in mysite/settings.py has “create database” privileges. This allows automatic creation of a test database which will be needed in a later tutorial.
+
+                If you’re using SQLite, you don’t need to create anything beforehand - the database file will be created automatically when it is needed.
+
+            While you’re editing mysite/settings.py, set TIME_ZONE to your time zone.
+
+
+
+
+
+
+
+
+
+    
+
+##################################################
+TOPICAL
+    SKILLS
+        * 
+        * 
+        * 
+        * 
+        * 
+        * 
+        * 
+
+    BEST PRACTICES
+        * 
+        * 
+    
+    
+    RELEVANT DATA
+        * 
+        * Django comes with a utility that automatically generates the basic directory structure of an app, so you can focus on writing code rather than creating directories.
+        * You can't run a Django app without a project, Django app should be inside a project
+        * 
+        * 
+        * 
+        * 
+        * 
+
+
+
+
+
+QUIZ
+    1. 
+        > 
+    2. 
+        > 
+    3. 
+        > 
+
+
+
+TERMS
+
+
+
+FEEDBACK
+
+
+
+
+
+EXERCISES
