@@ -1,0 +1,24 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+<head>
+  <title>Polls</title>
+</head>
+
+<h1>{{ question.question_text }}</h1>
+
+<ul class="q">
+  {% for choice in question.choice_set.all %}
+  <li>
+    {{ choice.choice_text }}
+    <span id="icon">➨</span>
+    <span id="voteNum">{{ choice.votes }} vote{{choice.votes|pluralize}}</span>
+  </li>
+  {% endfor %}
+</ul>
+
+<!-- <a href="{% url 'polls:detail' question.id %}">Vote again ?</a> -->
+<form action="{% url 'polls:detail' question.id %}">
+  <!-- <input id="btn" type="submit" value="Vote again" /> -->
+  <button id="btn" type="submit">Vote again</button>
+</form>
