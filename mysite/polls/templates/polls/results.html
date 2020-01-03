@@ -5,20 +5,32 @@
   <title>Polls</title>
 </head>
 
-<h1>{{ question.question_text }}</h1>
+<body>
+  <div class="box">
+    <form action="{% url 'polls:index' %}">
+      <!-- <input id="btn" type="submit" value="Back to Home" /> -->
+      <button id="homeBtn" type="submit">⇦ Home</button>
+    </form>
 
-<ul class="q">
-  {% for choice in question.choice_set.all %}
-  <li>
-    {{ choice.choice_text }}
-    <span id="icon">➨</span>
-    <span id="voteNum">{{ choice.votes }} vote{{choice.votes|pluralize}}</span>
-  </li>
-  {% endfor %}
-</ul>
+    <h1>{{ question.question_text }}</h1>
+    <ul class="result">
+      {% for choice in question.choice_set.all %}
+      <li>
+        🍀 {{ choice.choice_text }}
+        <span id="icon">
+          ➨
+        </span>
+        <span id="voteNum">
+          <b>{{ choice.votes }}</b> vote{{choice.votes|pluralize}}
+        </span>
+      </li>
+      {% endfor %}
+    </ul>
 
-<!-- <a href="{% url 'polls:detail' question.id %}">Vote again ?</a> -->
-<form action="{% url 'polls:detail' question.id %}">
-  <!-- <input id="btn" type="submit" value="Vote again" /> -->
-  <button id="btn" type="submit">Vote again</button>
-</form>
+    <!-- <a href="{% url 'polls:detail' question.id %}">Vote again ?</a> -->
+    <form action="{% url 'polls:detail' question.id %}">
+      <!-- <input id="btn" type="submit" value="Vote again" /> -->
+      <button id="btn" type="submit">Vote again</button>
+    </form>
+  </div>
+</body>
