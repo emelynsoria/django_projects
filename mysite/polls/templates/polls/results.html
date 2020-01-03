@@ -8,7 +8,6 @@
 <body>
   <div class="box">
     <form action="{% url 'polls:index' %}">
-      <!-- <input id="btn" type="submit" value="Back to Home" /> -->
       <button id="homeBtn" type="submit">⇦ Home</button>
     </form>
 
@@ -27,9 +26,7 @@
       {% endfor %}
     </ul>
 
-    <!-- <a href="{% url 'polls:detail' question.id %}">Vote again ?</a> -->
     <form action="{% url 'polls:detail' question.id %}">
-      <!-- <input id="btn" type="submit" value="Vote again" /> -->
       <button id="btn" type="submit">Vote again</button>
     </form>
   </div>

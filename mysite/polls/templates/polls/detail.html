@@ -7,7 +7,6 @@
 <body>
   <div class="box">
     <form action="{% url 'polls:index' %}">
-      <!-- <input id="btn" type="submit" value="Back to Home" /> -->
       <button id="homeBtn" type="submit">⇦ Back</button>
     </form>
     <h1>{{ question.question_text }}</h1>
@@ -29,7 +28,6 @@
         >{{ choice.choice_text }}</label
       ><br />
       {% endfor %}
-      <!-- <input type="submit" value="Vote" /> -->
       <button id="btn" type="submit">Vote</button>
     </form>
   </div>

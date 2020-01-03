@@ -1,6 +1,3 @@
-# from django.http import HttpResponse, Http404  # 1, 2, 3
-# from django.template import loader    # 2
-
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -20,7 +17,6 @@ class IndexView(generic.ListView):
         (not including those set to be published
          in the future).
         """
-        # return Question.objects.order_by("-pub_date")[:5]
         return Question.objects.filter(pub_date__lte=timezone.now()).order_by(
             "-pub_date"
         )[:5]
@@ -43,38 +39,7 @@ class ResultsView(generic.DetailView):
     template_name = "polls/results.html"
 
 
-# def index(request):
-#     latest_question_list = Question.objects.order_by("-pub_date")[:5]
-#     template = loader.get_template("polls/index.html")
-#     context = {
-#         "latest_question_list": latest_question_list,
-#     }
-#     # return HttpResponse(template.render(context, request))  # 2
-#     return HttpResponse(request, "polls/index.html", context)
-
-#     # output = ", ".join([q.question_text for q in latest_question_list])
-#     # return HttpResponse(output)   # 1
-
-
-# def detail(request, question_id):
-#     # try:  # 3
-#     #     question = Question.objects.get(pk=question_id)
-#     # except Question.DoesNotExist:
-#     #     raise Http404("Question does not exist ❌")
-#     # return render(request, "polls/detail.html", {"question": question})
-#     question = get_object_or_404(Question, pk=question_id)
-#     return render(request, "polls/detail.html", {"question": question})
-
-
-# def results(request, question_id):
-#     # response = f"You're looking at the results of question {question_id}."
-#     # return HttpResponse(response)
-#     question = get_object_or_404(Question, pk=question_id)
-#     return render(request, "polls/results.html", {"question": question})
-
-
 def vote(request, question_id):
-    # return HttpResponse(f"You're voting on question {question_id}.")
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST["choice"])
