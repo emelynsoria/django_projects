@@ -5,19 +5,29 @@
   <title>Polls</title>
 </head>
 <body>
-  <h1>Questions</h1>
-  {% if latest_question_list %}
-  <ul class="q">
-    {% for question in latest_question_list %}
-    <!-- <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li> -->
-    <li>
-      <a href="{% url 'polls:detail' question.id %}"
-        >{{ question.question_text }}</a
-      >
-    </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  <p>No polls are available.</p>
-  {% endif %}
+  <div class="box">
+    <center>
+      <img
+        src="https://www.501commons.org/blog/questions.png/image_preview"
+        height="100"
+        width="200"
+        alt="Questions"
+      />
+    </center>
+
+    {% if latest_question_list %}
+    <ul class="q">
+      {% for question in latest_question_list %}
+      <!-- <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li> -->
+      <li>
+        <a href="{% url 'polls:detail' question.id %}">
+          {{ question.question_text }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No polls are available.</p>
+    {% endif %}
+  </div>
 </body>
