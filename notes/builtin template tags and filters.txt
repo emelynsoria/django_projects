@@ -1,0 +1,40 @@
+format date:
+
+    {{ post.date_posted|date:"F d, Y" }}
+----------------------------------------
+
+
+from django.contrib import messages
+    # messages.debug
+    # messages.info
+    # messages.success
+    # messages.warning
+    # messages.error
+
+----------------------------------------
+ex:
+    customized user registration form
+
+from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
+
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ["username", "email", "password1", "password2"]
+
+== >
+- inherits from UserCreationForm, then adds the email field
+
+class Meta
+    - gives a nested namespace for configurations and keeps the config in one place
+    - save to the model (User model)
+    - fields: fields in the form and IN WHAT ORDER
+
+----------------------------------------
+
+

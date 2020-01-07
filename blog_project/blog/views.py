@@ -1,28 +1,30 @@
-from django.shortcuts import render
-
 # from django.http import HttpResponse
+from django.shortcuts import render
+from .models import Post
 
-post_list = [
-    {
-        "author": "CoreyMS",
-        "title": "Blog Post 1",
-        "content": "First post content",
-        "date_posted": "August 27, 2018",
-    },
-    {
-        "author": "Em Riego",
-        "title": "Blog Post 2",
-        "content": "Second post content",
-        "date_posted": "January 7, 2020",
-    },
-]
+# # dummy data
+# post_list = [
+#     {
+#         "author": "CoreyMS",
+#         "title": "Blog Post 1",
+#         "content": "First post content",
+#         "date_posted": "August 27, 2018",
+#     },
+#     {
+#         "author": "Em Riego",
+#         "title": "Blog Post 2",
+#         "content": "Second post content",
+#         "date_posted": "January 7, 2020",
+#     },
+# ]
 
 
 def home(request):
     # return HttpResponse("<h1>Blog Home</h1>")
 
-    # 'posts' as key for post_list list, w/c will be accessible in the template
-    context = {"posts": post_list}
+    # # 'posts' as key for post_list list, w/c will be accessible in the template
+    # context = {"posts": post_list}
+    context = {"posts": Post.objects.all()}
     return render(request, "blog/index.html", context)
 
 

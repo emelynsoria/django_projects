@@ -1,0 +1,32 @@
+
+Online Portfolio
+    This application basically is an online personal portfolio where users can store their resume and can post their works or something they've created.
+
+
+
+
+
+
+
+The Top 10 Industries On LinkedIn
+    Information Technology and Services
+    Marketing and Advertising
+    Human Resources
+    Computer Software
+    Financial Services
+    Staffing and Recruiting
+    Internet
+    Management Consulting
+    Telecommunications
+    Retail
+The Bottom 10 Industries On LinkedIn
+    Dairy
+    Nanotechnology
+    Shipbuilding
+    Judiciary
+    Alternative Dispute Resolution
+    Animation
+    Legislative Office
+    Fishery
+    Railroad Manufacture
+    Ranching
