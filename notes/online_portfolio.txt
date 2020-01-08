@@ -1,7 +1,106 @@
 
 Online Portfolio
-    This application basically is an online personal portfolio where users can store their resume and can post their works or something they've created.
 
+OVERVIEW
+    This application is an online portfolio wherein users can store their personal and professional data in their portfolio as well as showcase their works through posting or blogs. All users will be able to see posted works of each other and they can post comments on it as well. Through the post author’s name, they can view each other’s portfolio withoud needing to connect or follow other users.
+
+GOALS
+    The goal of this application is to let all users (be it students, employed, unemployed and employers) connect with each other through showcasing their works.
+
+
+PROPOSED PAGES:
+    Registration Page:
+        Users will input their basic data in this page to register a new account to be able to access the system. 
+
+    Login Page:
+        Users need to input their username and password first to access the system.
+    
+    Home Page
+        To be displayed here are all the recent blog posts made by all users. There will also be a navigation bar here for navigating to other pages such as the Portfolio and Blog and a button for logout.
+
+    Portfolio Page
+        This will contain information about Personal, Education, Skills, Work Experience, Projects and Awards.
+        
+        Viewing own:
+            They can go to this page (using the navigation bar) to store and view their own portfolio. They can also add and update their own data. 
+        Viewing others’:
+            If a user clicks on the name of a blog post’s author, it will be redirected to the post author’s portfolio. There they can view all information available.
+        
+        Portfolio (About)
+            Displayed here is the personal profile of a user like a sample user’s photo, name, address, contact information and maybe details about oneself or what they do.
+        Portfolio (Education)
+            Users can view all their academic backgrounds here. From Secondary to their highest educational attainment.
+        Portfolio (Skills)
+            Displayed here are all the relevant skills or attributes a user has.
+        Portfolio (Work Experience)
+            This page will contain all the previous jobs a user had worked on. Displayed are the job title, job description, inclusive dates  and other employment records.
+        Portfolio (Projects)
+            Name, details or screenshot of any small or big projects a user built or was a part of can be viewed here. Users can add any projects they’ve accomplished as long as it demonstrates their skills.
+        Portfolio (Awards)
+            All certificates, awards or recognition a user has can be stored and viewed here.
+        
+    Blog Page
+        On this page, users will be able to see all of his/her own blog entries. He/she can edit/update, add, or delete from them. It can also contain a photo.
+
+PROPOSED DATA MODELS:
+    Account:
+        acc_id
+        username
+        password
+
+    Personal_Information:
+        per_id
+        per_photo
+        first_name
+        middle_name
+        last_name
+        sex
+        birthdate
+        email
+        address
+        mobile_no
+        about_me
+        acc_id
+
+    Educational_Background:
+        educ_id
+        secondary_school_name
+        secondary_duration
+        college_school_name
+        college_duration
+        college_degree
+        per_id
+
+    Skills
+        sk_id
+        skill_name
+        per_id
+        Work_Experience:
+        work_id
+        work_title
+        work_description
+        work_location
+        inclusive_dates
+        per_id
+
+    Projects:
+        proj_id
+        proj_description
+        proj_file
+        per_id
+
+    Awards:
+        aw_id
+        award_title
+        award_date
+        per_id
+
+    Blogs:
+        blog_id
+        blog_title
+        blog_content
+        blog_file
+        acc_id
 
 
 
