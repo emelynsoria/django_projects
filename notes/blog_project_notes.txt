@@ -1,4 +1,4 @@
-python manage.py shell
+🔶 python manage.py shell
 ...
 (InteractiveConsole)
 >>> from blog.models import Post
@@ -47,7 +47,7 @@ python manage.py shell
 <QuerySet [<Post: Post object (1)>, <Post: Post object (2)>]>
 >>> exit()
 
-python manage.py shell
+🔶 python manage.py shell
 ...
 (InteractiveConsole)
 >>> from blog.models import Post
@@ -142,3 +142,66 @@ content_type = models.ForeignKey(ContentType,
         related_name="content_type_set_for_%(class)s")
 object_pk = models.TextField(_('object ID'))
 content_object = generic.GenericForeignKey(ct_field="content_type", fk_field="object_pk")
+
+
+-----------------------------------------
+ADDING MEDIA FILES:
+
+To use 'ImageField' in django:
+
+  🔶 pip install Pillow
+
+
+After migrating the installed Pillow package, add sample data (e.g. picture in Profile model), then run:
+  
+  🔶 python manage.py shell
+
+
+in terminal:
+python manage.py shell
+...
+(InteractiveConsole)
+>>> from django.contrib.auth.models import User
+>>> user = User.objects.filter(username='admin')
+>>> user
+<QuerySet [<User: admin>]>
+>>> user = User.objects.filter(username='admin').first()
+>>> user
+<User: admin>
+>>> user.profile
+<Profile: admin Profile>
+>>> user.profile.image
+<ImageFieldFile: profile_pics/admin.png>
+>>> user.profile.image.width
+512
+>>> user.profile.image.height
+512
+>>> user.profile.image.size
+10341
+>>> user.profile.image.url
+'profile_pics/admin.png'
+
+
+# find profile of another user which uses the 'default.jpg' -- which do not exist
+>>> user = User.objects.filter(username='eleven').first()
+>>> user
+<User: eleven>
+>>> user.profile.image
+<ImageFieldFile: default.jpg>
+>>> user.profile.image.width
+# it will return an error since 'default.jpg' doesn't exist
+Traceback (most recent call last):
+  File "<consoles>", line 1, in <module>
+ ...
+FileNotFoundError: [Errno 2] No such file or directory: '/home/webdev/django_projects/blog_project/default.jpg'
+>>> user.profile.image.url
+'default.jpg'
+
+
+🔶 HANDLING media files:
+1. All media files will be stored in 'media' directory automatically created in the base directory by adding 'MEDIA_ROOT = os.path.join(BASE_DIR, "media")' in settings.py
+2. Also, set 'MEDIA_URL' = '/media/' to handle media files in that dir
+3. If there are added media files in the system before adding doing step 1 and 2, delete them all, including the directories created in the file system/ base directory, and re-add those data. It will then be added now media dirctory in the base directory.
+
+
+

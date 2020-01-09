@@ -116,8 +116,19 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+# absolute path to the file system (NOT in db) where Media files will be uploaded
+# accepts a string, not a list or tuple
+# creates a new directory named 'media' inside project root directory
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# URL that handles the media served from MEDIA_ROOT, used for managing stored files
+# ex: media/
+MEDIA_URL = "/media/"
+
 # added for crispy_forms app
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
+# added for redirecting user to 'blog-home' page after logging in
 LOGIN_REDIRECT_URL = "blog-home"
+# added for redirecting user to 'login' page after going to page not accessible yet
+# ex: http://127.0.0.1:8000/profile/
 LOGIN_URL = "login"

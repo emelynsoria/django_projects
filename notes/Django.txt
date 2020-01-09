@@ -6,6 +6,20 @@ Django
         - provides a set of tools and functionalities that solves many common problems associated with Web development, such as security features, database access, sessions, template processing, URL routing, internationalization, localization, and much more.
 
 
+
+INSTALLED_APPS
+    BASE_DIR
+        - where 'manage.py' lies
+        - contains PROJECT_ROOT
+
+    
+    PROJECT_ROOT
+        - folder that contains setting.py
+        - BASE_DIR + project_dir_name
+
+       
+    
+
     ----------------------------
     Built-in template tags and filters
 

@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
+from django.conf import settings  # an object for enabling media files
+from django.conf.urls.static import static  # serving static files during dev't
 from users import views as user_views
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -35,3 +38,10 @@ urlpatterns = [
     ),
     path("", include("blog.urls")),
 ]
+
+
+# urlpatterns = [
+#     # ... the rest of your URLconf goes here ...
+# ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # or
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
