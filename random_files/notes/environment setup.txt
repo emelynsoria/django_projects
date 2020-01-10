@@ -1,0 +1,192 @@
+
+
+
+-----------------------------------------------------
+INSTALLING DEPENDENCIES
+
+//install yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install yarn
+yarn --version //or yarn -v
+//to update yarn
+curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+yarn -v
+//nps installation
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+//close terminal, reopen then,
+nvm install 8.11.3
+//check all installed nvm versions
+nvm ls
+//to run scripts, install
+npm install --global nps //recommended, //yarn global add nps
+//then, 
+nps install
+//then
+API_BASE_URL=http://devswarm.perfectpitchtech.com nps
+
+-----------------------------------------------------
+
+REACT
+DOCKER
+sudo apt install docker.io
+//If you'd like to be able to run docker commands without having to use sudo run the following commands.
+sudo usermod -aG docker $USER
+newgrp docker
+//install docker-compose
+sudo apt install docker-compose
+npm install
+npm start
+npm run api //to start api server, run in new terminal
+npm install --save axios //add axios package
+NODE
+npm init -y
+npm install -g nodemon
+mkdir server
+touch server/index.js
+npm install --save node-pg-migrate pg
+    //to create table
+    1. npm run migrate create add-users-table //created 'users' table
+    2. edit migrations/***add-users-table.js
+    3. npm run migrate up
+    
+    //SELECT * FROM information_schema.tables WHERE table_name='users';
+    //SELECT * FROM information_schema.tables WHERE table_schema='public';
+    
+    //to run db //in sql tabs
+    npm run db:start
+    npm run db:stop
+    
+    //to run in insomnia
+    nodemon server/index.js
+    
+    
+//start postgres instance w/ docker-compose
+docker-compose up -d db
+    
+npm install --save massive
+npm install --save express
+npm install --save argon2
+npm install --save jsonwebtoken
+
+-----------------------------------------------------
+
+
+
+//nps installation
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+//close terminal, reopen then,
+    nvm install 8.11.3
+//check all installed nvm versions
+    nvm ls
+    yarn global add nps
+    nps install
+
+-----------------------------------------------------
+
+install pyenv, python:
+    1. curl https://pyenv.run | bash
+    2. curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
+    3. ma error yan, hayaan mo lang
+    4. nano ~/.bashrc
+    5. tas copy mo ining 3 sa pinakababa
+    export PATH="/home/webdev/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+    6. ctrl o
+    7. ctrl x
+    8. restart terminal
+    9. pyenv update
+    10. pyenv --version
+    dapat may magluwas na na version. pero outdated yan kaya kelangan iupdate
+    11. sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev
+    12. pyenv install 3.7.4
+    13. pyenv version
+    pyenv global 3.7.4
+
+
+-----------------------------------------------------
+
+Install Django:
+    1. pip install Django==2.2.6
+        or
+        pip3 install Django
+        or
+        pip3 install --upgrade Django
+    2. django-admin --version
+    3. django-admin startproject <sample_folder_name>
+    4. cd <sample_folder_name>
+    5. python manage.py runserver
+    Then, open the link for development server
+    6. python manage.py migrate
+    7. python manage.py createsuperuser
+    8. python manage.py runserver
+    9. go to http://127.0.0.1:8000/admin #http://127.0.0.1:8000/admin/login/?next=/admin/
+
+
+
+-----------------------------------------------------
+Install 'pipenv':
+    pip3 install pipenv
+    pipenv --version    # pipenv, version 2018.11.26
+
+Then,
+EX:
+    1. First we need to create folder for our project as a container.
+        mkdir my-app && cd my-app
+    2. We also need to create virtual environment using pipenv.
+        pipenv --three
+    3. Create virtual environment using specific version of python.
+        pipenv --python 3.7
+    4. Install latest version of django https://www.djangoproject.com/download/.
+        ex: 
+            pipenv install Django==3.0.1
+    5. Last is activate our virtual environment.
+        pipenv shell
+
+
+
+-----------------------------------------------------
+1. LINTERS:
+    *pycodestyle:
+        - to check your Python code against some of the style conventions in PEP 8.
+        install, update, uninstall:
+            > pip install pycodestyle
+            > pip install --upgrade pycodestyle
+            > pip uninstall pycodestyle
+        to run:
+            > pycodestyle file_name.py
+    *flake8:
+        - a debugger, pyflakes, with pycodestyle
+        install:
+            > pip install flake8
+        to run:
+            > flake8 file_name.py
+2. AUTOFORMATTERS
+    *black:
+        -  autoformats code
+        -
+        install:
+            > pip install black
+        to run:
+            > black file_name.py
+            > black --line-length=79 file_name.py
+    *autopep8:
+        - requires pycodestyle.
+        - uses the pycodestyle utility to determine what parts of the code needs to be formatted. autopep8 is capable of fixing most of the formatting issues that can be reported by pycodestyle.
+        
+        install:
+            > pip install --upgrade autopep8
+            
+    *yapf:
+        -  produces as good as the code that a programmer would write
+        
+        install:
+            > pip install yapf
+
+
+Installing git
+    sudo apt install git
+    sudo apt-get upgrade
+    git --v
+
