@@ -1,0 +1,34 @@
+Prerequisites
+To follow along with this tutorial, you will need the following installed on your machine:
+
+Python.
+Pip.
+Pipenv.
+
+
+    mkdir django-todo-react
+    cd django-todo-react
+    $ pip install pipenv
+    $ pipenv shell
+
+    $ pipenv install django
+    $ django-admin startproject backend
+
+    $ cd backend
+    $ python manage.py startapp todo
+    $ python manage.py migrate
+    $ python manage.py runserver
+
+
+Setting up the APIs:
+
+    $ pipenv install djangorestframework django-cors-headers
+
+
+
+Creating serializers for the Todo model
+
+    $ touch todo/serializers.py
+
+
+
