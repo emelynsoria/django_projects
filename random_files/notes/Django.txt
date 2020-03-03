@@ -36,6 +36,18 @@ INSTALLATION:
     8. python manage.py runserver
     9. go to http://127.0.0.1:8000/admin #http://127.0.0.1:8000/admin/login/?next=/admin/
 
+---------------------
+CHANGE USER's password:
+
+    >>> from django.contrib.auth.models import User
+    >>> users = User.objects.all()
+    >>> users
+    <QuerySet [<User: admin2>]>
+    >>> user = users[0]
+    >>> user
+    <User: admin2>
+    >>> user.set_password('admin1234')
+    >>> user.save()
 
 
 
