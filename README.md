@@ -10,6 +10,9 @@
 
 ### `first_django`
 
+### `jobs_board`
+	Using django signals
+
 ### `library_proj`
 
 ### `mysite`
