@@ -1,5 +1,12 @@
 from django.db import models
 
+class CommonInfo(models.Model):
+    name = models.CharField(max_length=100, default='', blank=True)
+    age = models.PositiveIntegerField()
+
+    class Meta:
+        abstract = True
+
 class Job(models.Model):
     company = models.CharField(max_length=255, blank=False)
     company_email = models.CharField(max_length=255, blank=False)
@@ -12,7 +19,7 @@ class Job(models.Model):
     def __str__(self):
         return self.company
 
-class Subscriber(models.Model):
+class Subscriber(CommonInfo):
     email = models.CharField(max_length=255, blank=False, unique=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
