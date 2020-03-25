@@ -8,6 +8,10 @@ def get_jobs(request):
     jobs = Job.objects.all()
     return render(request, 'jobs.html', {'jobs': jobs})
 
+def get_job(request, id):
+    job = Job.objects.get(pk=id)
+    return render(request, 'job.html', {'job': job})
+
 def subscribe(request, id):
     job = Job.objects.get(pk=id)
     subscriber = Subscriber(email=request.POST['email'])

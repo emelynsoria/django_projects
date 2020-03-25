@@ -1,5 +1,15 @@
 from django.contrib import admin
-from .models import Job
+from .models import Job, Subscriber, Subscription
 
-# Register your models here.
-admin.site.register(Job)
+class JobAdmin(admin.ModelAdmin):
+	list_display=('company', 'company_email', 'title', 'status', 'date_created', 'date_modified')
+
+class SubscriberAdmin(admin.ModelAdmin):
+	list_display=('email', 'date_created', 'date_modified')
+
+class SubscriptionAdmin(admin.ModelAdmin):
+	list_display=('email', 'user', 'job', 'date_created', 'date_modified')
+
+admin.site.register(Job, JobAdmin)
+admin.site.register(Subscriber, SubscriberAdmin)
+admin.site.register(Subscription, SubscriptionAdmin)
