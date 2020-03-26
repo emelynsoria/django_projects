@@ -14,16 +14,18 @@ def get_job(request, id):
 
 def subscribe(request, id):
     job = Job.objects.get(pk=id)
-    subscriber = Subscriber(email=request.POST['email'])
+    subscriber = Subscriber(first_name=request.POST['first_name'], last_name=request.POST['last_name'], email=request.POST['email'])
     subscriber.save()
 
-    subscription = Subscription(user=subscriber, job=job, email=subscriber.email)
+    subscription = Subscription(user=subscriber, job=job)
     subscription.save()
 
     new_subscriber.send(sender=subscription, job=job, subscriber=subscriber)
 
     payload = {
       'job': job,
+      'first_name': request.POST['first_name'],
+      'last_name': request.POST['last_name'],
       'email': request.POST['email']
     }
     return render(request, 'subscribed.html', {'payload': payload})

@@ -8,7 +8,7 @@ class SubscriberAdmin(admin.ModelAdmin):
 	list_display=('email', 'date_created', 'date_modified')
 
 class SubscriptionAdmin(admin.ModelAdmin):
-	list_display=('email', 'user', 'job', 'date_created', 'date_modified')
+	list_display=('user', 'job', 'date_created', 'date_modified')
 
 admin.site.register(Job, JobAdmin)
 admin.site.register(Subscriber, SubscriberAdmin)

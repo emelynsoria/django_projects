@@ -3,6 +3,25 @@
 This repository contains code from this [blog](https://stackabuse.com/using-django-signals-to-simplify-and-decouple-code/)
 
 
+#### django models - makes use of abstract models
+
+	class CommonInfo(models.Model):
+	    first_name = models.CharField(max_length=100, default='', blank=True)
+	    last_name = models.CharField(max_length=100, default='', blank=True)
+
+	    class Meta:
+	        abstract = True
+
+	...
+
+	class Subscriber(CommonInfo):
+	    email = models.CharField(max_length=255, blank=False, unique=True)
+	    date_created = models.DateTimeField(auto_now_add=True)
+	    date_modified = models.DateTimeField(auto_now=True)
+
+	    def __str__(self):
+	        return self.email
+
 ### Set up the environment
 	$ pipenv install --three
 

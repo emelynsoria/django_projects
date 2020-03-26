@@ -1,8 +1,8 @@
 from django.db import models
 
 class CommonInfo(models.Model):
-    name = models.CharField(max_length=100, default='', blank=True)
-    age = models.PositiveIntegerField()
+    first_name = models.CharField(max_length=100, default='', blank=True)
+    last_name = models.CharField(max_length=100, default='', blank=True)
 
     class Meta:
         abstract = True
@@ -28,11 +28,11 @@ class Subscriber(CommonInfo):
         return self.email
 
 class Subscription(models.Model):
-    email = models.CharField(max_length=255, blank=False, unique=True)
+    # email = models.CharField(max_length=255, blank=False, unique=True)
     user = models.ForeignKey(Subscriber, related_name="subscriptions", on_delete=models.CASCADE)
     job = models.ForeignKey(Job, related_name="jobs", on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.email
+        return self.user

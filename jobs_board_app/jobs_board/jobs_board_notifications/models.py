@@ -11,8 +11,9 @@ def handle_new_subscription(sender, **kwargs):
     subscriber = kwargs['subscriber']
     job = kwargs['job']
 
-    message = """User {} has just subscribed to the Job {}.
-    """.format(subscriber.email, job.title)
+    message = f"User {subscriber.email} has just subscribed to the Job {job.title}."
+    # message = """User {} has just subscribed to the Job {}.
+    # """.format(subscriber.email, job.title)
 
     print(message)
 
@@ -24,7 +25,8 @@ def handle_deleted_job_posting(**kwargs):
     subscribers = Subscription.objects.filter(job=job)
 
     for subscriber in subscribers:
-        message = """Dear {}, the job posting {} by {} has been taken down.
-        """.format(subscriber.email, job.title, job.company)
+        # print('SUBSCRIBER: ', subscriber)
+        # print('SUBSCRIBER NAME: ', subscriber.user)
+        message = f"Dear {subscriber.user}, the job posting {job.title} by {job.company} has been taken down."
 
         print(message)
