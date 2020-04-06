@@ -7,14 +7,14 @@
 ### blog-using-hooks
 
 ### chat-app
-	- used `Django Channels`
+	used `Django Channels`
 
 ### django-todo-react
 
 ### first-django-project
 
 ### jobs-board
-	- used `Django Signals`
+	used `Django Signals`
 
 ### library
 
@@ -29,4 +29,4 @@
 ### sample-portfolio
 
 ### tutorial
-	- used `HyperlinkedModelSerializer` in serializers
+	used `HyperlinkedModelSerializer` in serializers
