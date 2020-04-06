@@ -2,27 +2,31 @@
 
 ## PROJECTS:
 
-### `blog_project`
+### blog
 
-### `blog_using_hooks`
+### blog-using-hooks
 
-### `django_todo_react`
+### chat-app
+	- used `Django Channels`
 
-### `first_django`
+### django-todo-react
 
-### `jobs_board`
-	Using django signals
+### first-django-project
 
-### `library_proj`
+### jobs-board
+	- used `Django Signals`
 
-### `mysite`
+### library
 
-### `online_portfolio`
+### mysite
 
-### `personal_portfolio`
+### online_portfolio
 
-### `sample_pipenv_app`
+### personal-portfolio
 
-### `sample_portfolio`
+### sample-pipenv-app
 
-### `tutorial`
+### sample-portfolio
+
+### tutorial
+	- used `HyperlinkedModelSerializer` in serializers
