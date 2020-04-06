@@ -15,7 +15,7 @@ This repository contains code from this [tutorial](https://channels.readthedocs.
 ### Run the command below to check if `Django Channels` has already been installed: 
 	$ python -c 'import channels; print(channels.__version__)'
 
-### If not, installed `Channels`:
+### If not, install Channels:
 	$ python -m pip install -U channels
 
 ### Setup database
